@@ -38,7 +38,43 @@
     <!-- App Container (hidden until login) -->
     <div id="app-container" class="hidden">
         <div class="flex h-screen overflow-hidden">
-        <!-- Sidebar -->
+        <!-- Mobile Header -->
+        <div class="md:hidden fixed top-0 left-0 right-0 bg-gray-900 text-white z-50">
+            <div class="flex items-center justify-between px-4 h-14">
+                <span class="font-bold">Converging Demo</span>
+                <button onclick="toggleMobileMenu()" class="p-2">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Overlay -->
+        <div id="mobile-menu" class="md:hidden fixed inset-0 z-40 hidden">
+            <div class="absolute inset-0 bg-black opacity-50" onclick="toggleMobileMenu()"></div>
+            <div class="absolute top-0 left-0 w-64 h-full bg-gray-800 text-white pt-14">
+                <nav class="px-2 py-4 space-y-2">
+                    <a href="#" onclick="showSection('dashboard'); toggleMobileMenu();" class="flex items-center px-4 py-2 text-gray-300 hover:bg-gray-700 rounded-md">
+                        <i class="fas fa-chart-line mr-3"></i> Dashboard
+                    </a>
+                    <a href="#" onclick="showSection('captura'); toggleMobileMenu();" class="flex items-center px-4 py-2 text-gray-300 hover:bg-gray-700 rounded-md">
+                        <i class="fas fa-plus-circle mr-3"></i> Captura Lead
+                    </a>
+                    <a href="#" onclick="showSection('llamadas'); toggleMobileMenu();" class="flex items-center px-4 py-2 text-gray-300 hover:bg-gray-700 rounded-md">
+                        <i class="fas fa-phone-slash mr-3"></i> Llamadas Perdidas
+                    </a>
+                    <a href="#" onclick="showSection('agente'); toggleMobileMenu();" class="flex items-center px-4 py-2 text-gray-300 hover:bg-gray-700 rounded-md">
+                        <i class="fas fa-user-tie mr-3"></i> Vista Agente
+                    </a>
+                </nav>
+                <div class="absolute bottom-0 left-0 right-0 px-4 py-4 border-t border-gray-700">
+                    <button onclick="handleLogout()" class="flex items-center w-full px-4 py-2 text-gray-300 hover:bg-red-700 rounded-md">
+                        <i class="fas fa-sign-out-alt mr-3"></i> Cerrar Sesion
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sidebar (Desktop) -->
         <div class="hidden md:flex md:flex-shrink-0">
             <div class="flex flex-col w-64 bg-gray-800 text-white">
                 <div class="flex items-center justify-center h-16 bg-gray-900 text-xl font-bold">
@@ -70,7 +106,7 @@
 
         <!-- Main Content -->
         <div class="flex flex-col flex-1 w-0 overflow-hidden">
-            <main class="flex-1 relative overflow-y-auto focus:outline-none p-6">
+            <main class="flex-1 relative overflow-y-auto focus:outline-none p-6 pt-20 md:pt-6">
 
                 <!-- Dashboard Section -->
                 <div id="dashboard-section" class="section-content">

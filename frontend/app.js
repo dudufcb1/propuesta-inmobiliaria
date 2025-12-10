@@ -520,6 +520,11 @@ async function cambiarEstado(id, nuevoEstado) {
 
 // --- UTILIDADES ---
 
+function toggleMobileMenu() {
+    const menu = document.getElementById('mobile-menu');
+    menu.classList.toggle('hidden');
+}
+
 function showNotification(msg) {
     const notif = document.getElementById('notification');
     notif.textContent = msg;
