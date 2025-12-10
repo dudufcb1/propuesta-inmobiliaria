@@ -1,0 +1,146 @@
+
+================================================================================
+PLAN DE TRABAJO - CRM INMOBILIARIO (MOCK/DEMO)
+================================================================================
+
+📋 OBJETIVO: Sistema de gestión de contactos inmobiliarios con backend en 
+Pandas/Python y frontend simple para demostración.
+
+================================================================================
+FASE 1: BACKEND - DATOS Y LÓGICA (Python + Pandas)
+================================================================================
+
+1.1 SEEDER DE DATOS (1-2 horas)
+   - Crear faker/seeder para generar:
+     * 50 propiedades (ID, dirección, tipo, precio, agente responsable)
+     * 10 agentes (nombre, email, WhatsApp, propiedades asignadas)
+     * 100 contactos simulados (nombre, teléfono, fecha, propiedad, estado)
+   - Guardar en CSV: propiedades.csv, agentes.csv, contactos.csv
+
+1.2 MÓDULO DE ASIGNACIÓN AUTOMÁTICA (2-3 horas)
+   - Función: asignar_agente(contacto)
+     * Buscar agente por propiedad consultada
+     * Si no hay propiedad → round-robin
+   - Función: notificar_agente(contacto, agente)
+     * Simular envío WhatsApp (print/log)
+   - Función: actualizar_estado(contacto_id, nuevo_estado)
+
+1.3 MÓDULO DE MONITOREO (1-2 horas)
+   - Función: verificar_respuestas(tiempo_limite=15)
+     * Detectar contactos sin respuesta
+     * Escalar a supervisor automáticamente
+   - Función: generar_metricas()
+     * Tiempo promedio respuesta
+     * Tasa de conversión
+     * Contactos por agente
+
+1.4 API REST SIMPLE (2-3 horas)
+   - Flask/FastAPI con endpoints:
+     * POST /contactos → Crear nuevo contacto (Gisel lo captura)
+     * GET /contactos → Listar todos con filtros
+     * GET /agentes → Listar agentes y carga de trabajo
+     * GET /dashboard → Métricas en tiempo real
+     * PATCH /contactos/:id → Actualizar estado
+
+================================================================================
+FASE 2: FRONTEND - INTERFAZ DEMO (HTML + JS + CSS)
+================================================================================
+
+2.1 PÁGINA: CAPTURA DE CONTACTOS (2-3 horas)
+   - Formulario para Gisel:
+     * Inputs: nombre, teléfono, propiedad (dropdown), fuente
+     * Botón: "Registrar Contacto"
+     * Al enviar → POST a API → Muestra confirmación
+   - Visual: simple, funcional, responsive (Tailwind CSS)
+
+2.2 PÁGINA: DASHBOARD DE GESTIÓN (3-4 horas)
+   - Tabla de contactos en tiempo real:
+     * Columnas: nombre, teléfono, propiedad, agente, estado, timestamp
+     * Filtros: por estado, por agente, por fecha
+   - Cards con métricas:
+     * Total contactos hoy
+     * Contactos pendientes
+     * Tiempo promedio respuesta
+     * Tasa de contacto exitoso
+   - Auto-refresh cada 10 segundos
+
+2.3 PÁGINA: VISTA AGENTE (2-3 horas)
+   - Lista de contactos asignados al agente (simulado)
+   - Botón: "Marcar como Contactado"
+   - Historial de interacciones
+
+================================================================================
+FASE 3: INTEGRACIÓN Y DEMO (1-2 horas)
+================================================================================
+
+3.1 SCRIPT DE DEMOSTRACIÓN
+   - Ejecutar seeder → Poblar base de datos
+   - Iniciar API backend
+   - Abrir frontend en navegador
+   - Demostrar flujo completo:
+     1. Gisel registra contacto → Formulario
+     2. Sistema asigna automáticamente → Dashboard actualiza
+     3. Agente recibe notificación → Vista agente
+     4. Métricas se actualizan → Cards dashboard
+
+3.2 DOCUMENTACIÓN RÁPIDA
+   - README.md con:
+     * Cómo instalar dependencias
+     * Cómo ejecutar seeder
+     * Cómo iniciar backend/frontend
+     * Screenshots del sistema
+
+================================================================================
+STACK TECNOLÓGICO RECOMENDADO
+================================================================================
+
+Backend:
+- Python 3.9+
+- Pandas (manipulación datos)
+- Flask o FastAPI (API REST)
+- Faker (generación datos)
+
+Frontend:
+- HTML5 + JavaScript vanilla (o React si prefieres)
+- Tailwind CSS o Bootstrap (estilos rápidos)
+- Fetch API (llamadas al backend)
+
+Almacenamiento:
+- CSV files (simple para mock)
+- O SQLite si quieres persistencia
+
+================================================================================
+TIEMPO ESTIMADO TOTAL: 12-18 horas
+================================================================================
+
+Prioridad alta: Fase 1 (backend) + Dashboard básico
+Prioridad media: Vista agente + Auto-refresh
+Prioridad baja: Estilos avanzados + Animaciones
+
+================================================================================
+ENTREGABLES FINALES
+================================================================================
+
+✓ /backend
+  - seeder.py
+  - models.py
+  - asignacion.py
+  - api.py
+  - requirements.txt
+
+✓ /frontend
+  - index.html (captura)
+  - dashboard.html
+  - agente.html
+  - styles.css
+  - app.js
+
+✓ /data
+  - propiedades.csv
+  - agentes.csv
+  - contactos.csv
+
+✓ README.md
+✓ demo_script.py (ejecuta demo automática)
+
+================================================================================
