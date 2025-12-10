@@ -9,7 +9,7 @@ CORS(app, supports_credentials=True)
 # Usuario demo hardcodeado
 DEMO_USER = {
     'email': 'converging@demo.com',
-    'password': 'demo2024',
+    'password': 'demo2025',
     'name': 'Demo User'
 }
 
